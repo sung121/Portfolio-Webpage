@@ -5,10 +5,10 @@ import Image from "next/image"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen w-full bg-background flex flex-col items-center">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center bg-gradient-to-b from-background to-secondary/20">
-        <div className="container px-4 md:px-6">
+      <section className="w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-background to-secondary/20">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
               Game Developer & Software Engineer
@@ -46,10 +46,10 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <h2 className="text-3xl font-bold tracking-tighter text-center mb-8">Technical Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <SkillCard
               title="C++"
               description="Systems Programming"
@@ -75,8 +75,8 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <h2 className="text-3xl font-bold tracking-tighter text-center mb-8">Featured Project</h2>
           <div className="max-w-4xl mx-auto">
             <Card>
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }
 
