@@ -1,15 +1,11 @@
+"use client"
+
 import "@/styles/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import type React from "react" // Added import for React
+import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
-
-export const metadata = {
-  title: "Game Developer Portfolio",
-  description: "Portfolio showcasing game development and programming skills",
-    generator: 'v0.dev'
-}
 
 export default function RootLayout({
   children,
@@ -17,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
@@ -30,3 +26,7 @@ export default function RootLayout({
 
 
 import './globals.css'
+
+export const metadata = {
+      generator: 'v0.dev'
+    };

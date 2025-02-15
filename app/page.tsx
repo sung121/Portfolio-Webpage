@@ -1,98 +1,114 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Github, Mail } from "lucide-react"
+import { Github, Mail, Linkedin, Instagram, ChevronDown, ExternalLink } from "lucide-react"
 import Image from "next/image"
+import { useTranslation } from "../utils/i18n"
+import { NavMenu } from "@/components/nav-menu"
 
 export default function Home() {
+  const { t, language } = useTranslation()
+
   return (
-    <main className="min-h-screen w-full bg-background flex flex-col items-center">
+    <main className="min-h-screen w-full bg-black text-white">
+      {/* Navigation */}
+      <NavMenu />
+
       {/* Hero Section */}
-      <section className="w-full min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-background to-secondary/20">
+      <section id="home" className="relative w-full min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-              Game Developer & Software Engineer
+          <div className="flex flex-col items-center text-center space-y-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter">
+              {language === "ko" ? "성현준" : "Hyeonjun Seong"}
             </h1>
-            <div className="flex items-center justify-center space-x-2 text-muted-foreground">
-              <span>Member of</span>
-              <a
-                href="https://cafe.naver.com/hidingpowergames"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold hover:text-primary transition-colors"
-              >
-                Hiding Games
-              </a>
-            </div>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-              Crafting immersive gaming experiences with Unity and modern technologies
-            </p>
+            <p className="text-lg text-gray-400 max-w-[600px]">{t("description")}</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild>
-                <a href="mailto:blitss24@gmail.com" target="_blank" rel="noopener noreferrer">
+              <Button asChild variant="outline" className="border-white/10 hover:border-white/20 bg-transparent">
+                <a href="mailto:blitss24@gmail.com">
                   <Mail className="mr-2 h-4 w-4" />
-                  Contact Me
+                  {t("email")}
                 </a>
               </Button>
-              <Button variant="outline" asChild>
+              <Button asChild variant="outline" className="border-white/10 hover:border-white/20 bg-transparent">
                 <a href="https://github.com/sung121" target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" />
                   GitHub
                 </a>
               </Button>
+              <Button asChild variant="outline" className="border-white/10 hover:border-white/20 bg-transparent">
+                <a
+                  href="https://www.linkedin.com/in/%ED%98%84%EC%A4%80-%EC%84%B1-169bb4308/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="mr-2 h-4 w-4" />
+                  LinkedIn
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="border-white/10 hover:border-white/20 bg-transparent">
+                <a href="https://www.instagram.com/hyeon_jun0822" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="mr-2 h-4 w-4" />
+                  Instagram
+                </a>
+              </Button>
             </div>
           </div>
         </div>
+        <a
+          href="#skills"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white animate-bounce"
+        >
+          <ChevronDown className="h-8 w-8" />
+        </a>
       </section>
 
       {/* Skills Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      <section id="skills" className="w-full py-20 md:py-32">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <h2 className="text-3xl font-bold tracking-tighter text-center mb-8">Technical Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold tracking-tighter mb-12 text-center">{t("technicalSkills")}</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <SkillCard
               title="C++"
-              description="Systems Programming"
+              description={t("systemsProgramming")}
               icon="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QVTyaVtHW0W8oB8nd3MKQ25dbAeK8M.png"
             />
             <SkillCard
               title="C#"
-              description="Game Development"
+              description={t("gameDevelopment")}
               icon="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-mIOSKoI7Ucd2dDyDxJOq0AsEg3QbEU.png"
             />
             <SkillCard
               title="Unity"
-              description="Game Engine"
+              description={t("gameEngine")}
               icon="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qRxuLrm2Emm9BdJs7mh38s3gnJtAJF.png"
             />
             <SkillCard
               title="Git"
-              description="Version Control"
-              icon="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-fdEKSaZ0d6B799o69lFVK48gdQg2GQ.png"
+              description={t("versionControl")}
+              icon="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-zzbDyefuQ67a9YVUosFIXLSP2nMNYi.png"
             />
           </div>
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20">
+      <section id="portfolio" className="w-full py-20 md:py-32">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <h2 className="text-3xl font-bold tracking-tighter text-center mb-8">Featured Project</h2>
+          <h2 className="text-3xl font-bold tracking-tighter mb-12 text-center">{t("portfolio")}</h2>
           <div className="max-w-4xl mx-auto">
-            <Card>
-              <CardContent className="p-0 aspect-video">
-                <iframe
-                  src="https://www.youtube.com/embed/lEsV8CS-_nE"
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+            <Card className="bg-white/5 border-white/10">
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-bold mb-2">{t("unityGameProject")}</h3>
+                <p className="text-gray-400 mb-4">{t("projectDescription")}</p>
+                <Button asChild variant="outline" className="border-white/10 hover:border-white/20 bg-transparent">
+                  <a href="https://www.youtube.com/watch?v=lEsV8CS-_nE" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    {t("viewProject")}
+                  </a>
+                </Button>
               </CardContent>
             </Card>
-            <div className="mt-6 text-center">
-              <h3 className="text-2xl font-bold mb-2">Unity Game Project</h3>
-              <p className="text-muted-foreground">A showcase of my game development capabilities using Unity and C#</p>
-            </div>
           </div>
         </div>
       </section>
@@ -102,7 +118,7 @@ export default function Home() {
 
 function SkillCard({ title, description, icon }: { title: string; description: string; icon: string }) {
   return (
-    <Card className="relative group overflow-hidden hover:shadow-lg transition-shadow">
+    <Card className="bg-white/10 border-white/10 hover:bg-white/15 transition-colors">
       <CardContent className="p-6">
         <div className="flex flex-col items-center text-center space-y-4">
           <div className="w-20 h-20 relative">
@@ -110,7 +126,7 @@ function SkillCard({ title, description, icon }: { title: string; description: s
           </div>
           <div>
             <h3 className="font-bold text-lg">{title}</h3>
-            <p className="text-sm text-muted-foreground">{description}</p>
+            <p className="text-sm text-gray-400">{description}</p>
           </div>
         </div>
       </CardContent>
